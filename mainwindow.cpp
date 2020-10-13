@@ -57,6 +57,8 @@
 #include <QLabel>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QDate>
+#include <QTime>
 
 
 //! [0]
@@ -249,8 +251,11 @@ void MainWindow::initActionsConnections()
     connect(m_ui->actionClear, &QAction::triggered, m_console, &Console::clear);
     connect(m_ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
     connect(m_ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
+//    QString time_string = QTime::currentTime().toString();
+    QTime time = QTime::currentTime();
+    QString filename = QDate::currentDate().toString("'output_'yyyy_MM_dd_'") + QString::number(time.second()) + ".txt";
 
-    file.setFileName("output.txt");
+    file.setFileName(filename);
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
