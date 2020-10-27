@@ -197,6 +197,7 @@ void MainWindow::readData()
     m_console->putData(data.toUtf8());
     m_console->putData("\n");
     out << data << "\r" << "\n";
+
     if (data == "ER061")
     {
         if (data == "ER061")
@@ -219,6 +220,7 @@ void MainWindow::readData()
 
     if (data == "FIPD0")
         reinicios_ciclos++;
+
 #if 0
     if (reinicios_ciclos>0)
     {
